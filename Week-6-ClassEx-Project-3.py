@@ -8,15 +8,12 @@ def sales():
     
     for count in range(1, num_days+1): #start with 1, increment by 1
         #inside of loop because nested after the for loop
-        try:
-            sales = float(input("Enter the sales for day # "+str(count)+ ": "))        
-        except ValueError:
-            print("Invalid input, please enter a number.")
-            return
+        sales = float(input("Enter the sales for day # "+str(count)+ ": "))        
         sales_file.write(str(sales)+'\n')
     
     #outside of the loop, by indenting
     sales_file.close()
+    
 
 def ReadSales(): #defines read fxn
     sales_file = open('sales.txt','r') #opens file to read
@@ -25,11 +22,7 @@ def ReadSales(): #defines read fxn
     
     while line != '': #as long as empty string not returned
         
-        try:
-            amount = float(line)
-        except ValueError:
-            print("Invalid input in file, please check file contents.")
-            return
+        amount = float(line)
         
         print(format(amount, '.2f')) #prints the line that was read
         line = sales_file.readline() #reads another line
