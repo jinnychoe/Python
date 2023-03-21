@@ -16,23 +16,20 @@ lblCity = tk.Label(win, text="City: ").grid(column=0, row=3)
 lblState = tk.Label(win, text="State: ").grid(column=0, row=4)
 lblZipcode = tk.Label(win, text="Zipcode: ").grid(column=0, row=5)
 
-
-
+#writes to file
 def write():
     text_file = open("Customers.txt", "a")
     content = text_file.write("\nConfirmation: " + str(LN.get()) + ", " + str(FN.get())+ "," + str(ADDRESS.get()) + "," + str(CITY.get()) + "," + str(STATE.get()) + "," + str(ZIPCODE.get()))
     text_file.close()
     messagebox.showinfo("Information", "Data recorded")
 
-
+#quits program
 def quit():
     messagebox.showinfo("Information", "Thank you...")
     win.destroy()  # closes interface
 
-
-def submit():  # function name
+def submit():  # submit function
     messagebox.showinfo("Information", "Entered: " + LN.get() + "," + FN.get()  + "," + ADDRESS.get() + "," + CITY.get() + "," + STATE.get() + "," + ZIPCODE.get())  # display info
-
 
 LN = tk.StringVar()  # the StringVar manages the entry widget
 txtLastname = tk.Entry(win, width=12, textvariable=LN).grid(column=1, row=0)  # text entry widget
@@ -51,8 +48,6 @@ tk.Entry(win, width=35, textvariable=STATE).grid(column=1, row=4)
 
 ZIPCODE = tk.StringVar()
 tk.Entry(win, width=35, textvariable=ZIPCODE).grid(column=1, row=5)
-
-
 
 # command calls the click fxn
 btnSubmit = tk.Button(win, text="Submit", command=submit).grid(column=0, row=4)  # Button widget
