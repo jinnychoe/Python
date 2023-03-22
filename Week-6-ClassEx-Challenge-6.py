@@ -48,11 +48,9 @@ def submit():  #function name
 btnSubmit = tk.Button(win, text="Submit", command=submit).grid(column=0, row=4)  # Button widget
 
 #command calls quit fxn
-btnQuit = tk.Button(win, text="Quit", command=quit).grid(column=1, row=4)  # button widget
+btnQuit = tk.Button(win, text="Quit", command=quit).grid(column=2, row=4)  # button widget
 
 #call the function write
 btnWrite = tk.Button(win, text="Transfer", command=write).grid(column=1, row=4)  # button widget
-
-
 
 win.mainloop()  # ensures the interfaces stays on the screen or window
