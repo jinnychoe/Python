@@ -32,7 +32,7 @@ def write():
     text_file = open("Numbers.txt", "a")  # open text file to append
 
     # write in text file
-    content = text_file.write("\nThe three numbers are: " + str(NUM1.get()) + ", " + str(NUM2.get()) + ", " + str(
+    content = text_file.write("The three numbers are: " + str(NUM1.get()) + ", " + str(NUM2.get()) + ", " + str(
         NUM3.get()) + "\nThe total is " + str(TOTAL) + ".\n The average is " + str(AVG) + ".")
 
     text_file.close()  # close text file
