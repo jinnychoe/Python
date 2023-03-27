@@ -1,6 +1,6 @@
 #Jinny Choe
 #3/27/2023
-#Week 7 Class Exercise 3
+#Week 7 Class Exercise Strings 3
 
 #This program demonstrates how to tokenize strings
 
