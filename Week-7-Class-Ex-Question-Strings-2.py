@@ -1,6 +1,6 @@
 #Jinny Choe
 #3/27/2023
-#Week 7 Class Exercise 2
+#Week 7 Class Exercise Strings 2
 
 #The get_login_name function accepts a first name, last name, and ID number as arguments. It returns a system login name
 
