@@ -1,6 +1,6 @@
 #Jinny Choe
 #3/27/2023
-#Week 7 Class Exercise 1
+#Week 7 Class Exercise Strings 1
 
 #This program demonstrates several string testing methods
 
