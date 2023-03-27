@@ -1,6 +1,6 @@
 #Jinny Choe
 #3/27/2023
-#Week 7 Class Exercise 4
+#Week 7 Class Exercise Strings 4
 
 #this program reads test scores from a csv file and calcualtes each student's test average
 
