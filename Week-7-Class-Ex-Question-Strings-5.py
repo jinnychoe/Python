@@ -1,6 +1,6 @@
 #Jinny Choe
 #3/27/2023
-#Week 7 Class Exercise 5
+#Week 7 Class Exercise Strings 5
 
 #This program counts the number of times the letter T (uppercase or lowercase) appears in a string
 
