@@ -1,0 +1,8 @@
+#Jinny Choe
+#3/27/2023
+#Week 7 Class Exercise Sets Dictionaries Challenge #4
+
+#This program will ask for the week sales to get the total and store it in a list
+
+def main():
+    days_in_the_week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'
