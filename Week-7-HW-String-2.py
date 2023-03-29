@@ -1,7 +1,7 @@
 #Jinny Choe
 #3/29/2023
-#Week 7 Homework String #1
-#Vowels, Consonants
+#Week 7 Homework String #2
+#most freq char
 
 def str_input():
     while True:
