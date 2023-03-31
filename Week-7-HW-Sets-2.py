@@ -4,14 +4,14 @@
         
 import pickle
 
-# Load the dictionary of vegetables and prices from the file (if it exists)
+#Opens vegetables.dat dictionary with pickle
 try:
     with open('vegetables.dat', 'rb') as file:
         vegetables = pickle.load(file)
 except FileNotFoundError:
     vegetables = {}
 
-# Display the menu and let the user choose an option
+#Menu with options
 while True:
     print('Vegetables and prices')
     print('1: List all vegetables')
@@ -21,7 +21,7 @@ while True:
     print('5: Quit')
     num = input('Enter a number: ')
 
-    # Lists vegetables and vegetable prices
+    #Lists vegetables with prices
     if num == '1':
         
         if vegetables:
@@ -30,9 +30,9 @@ while True:
             for veg, price in vegetables.items():
                 print(f'{veg}\t\t${price:.2f}')
         else:
-            print('You have not added vegetables to the file')
+            print('You have not added vegetables to the file\n')
 
-    # Adds vegetables and vegetable prices
+    #Adds vegetables and prices
     elif num == '2':
         while True:
             veg = input('Enter vegetable name: ')
@@ -46,11 +46,11 @@ while True:
                 vegetables[veg] = price
                 break
             except ValueError:
-                print("Invalid price.")
+                print("Invalid price.\n")
         
         print(f'{veg} has been added to the list.\n')
 
-    # Change the price of an existing vegetable
+    #Changes price of existing vegetable
     elif num == '3':
         while True:
             veg = input('Enter the name of the vegetable to change: ')
@@ -66,7 +66,7 @@ while True:
             else:
                 print(f'{veg} not found on the list.\n')
 
-    # Delete vegetable on list
+    #Deletes vegetable on list
     elif num == '4':
         if not vegetables:
             print ("No vegetables in vegetables.dat.\n")
@@ -79,12 +79,12 @@ while True:
             print(f'{veg} cannot be found on the list.\n')
         break
 
-    # Exit and save to file
+    #Save vegetable.dat and close program
     elif num == '5':
         with open('vegetables.dat', 'wb') as file:
             pickle.dump(vegetables, file)
-        print('Saving to vegetables.dat and quitting the program.')
+        print('Saving to vegetables.dat and quitting the program.\n')
         break
 
     else:
-        print('You must chose 1, 2, 3, 4, or 5.')
+        print('You must chose 1, 2, 3, 4, or 5.\n')
