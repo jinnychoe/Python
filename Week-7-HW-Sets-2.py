@@ -9,7 +9,7 @@ try:
     with open('vegetables.dat', 'rb') as file:
         vegetables = pickle.load(file)
 except FileNotFoundError:
-    vegetables = {}
+    vegetables = {} #creates new dictionary if not found
 
 #Menu with options
 while True:
@@ -21,70 +21,72 @@ while True:
     print('5: Quit')
     num = input('Enter a number: ')
 
-    #Lists vegetables with prices
+    #prints vegetables with prices
     if num == '1':
-        
-        if vegetables:
+       
+        if vegetables: #if there is anything in the dictionary, will give you vegetable prices
             print('Price of vegetables')
         
-            for veg, price in vegetables.items():
-                print(f'{veg}\t\t${price:.2f}')
-        else:
-            print('You have not added vegetables to the file\n')
+            for item, price in vegetables.items(): 
+                print(f'{item}\t\t${price:.2f}')
+        else: #if nothing in dictionary, will print msg
+            print('You have not added any vegetables to the file!\n')
 
     #Adds vegetables and prices
     elif num == '2':
         while True:
-            veg = input('Enter vegetable name: ')
-            while not veg:
+            item = input('Enter vegetable name: ')
+            while not item:
                 print("Please enter a vegetable name: ")
-                veg = input('Enter vegetable name: ')
-            if veg == "":
+                item = input('Enter vegetable name: ') #if there are blank spaces, will continue to ask for veg name
+            if item == "": 
                 break
             try: 
-                price = float(input('Please input the price of the vegetable: '))
-                vegetables[veg] = price
+                price = float(input('Please input the price of the vegetable: $ ')) #asks user for price of vegetable
+                vegetables[item] = price #adds price to vegetable in dictionary
                 break
-            except ValueError:
+            except ValueError: #if a nonfloat is inputed, will throw error
                 print("Invalid price.\n")
         
-        print(f'{veg} has been added to the list.\n')
+        print(f'{item} has been added to the list.\n')
 
     #Changes price of existing vegetable
     elif num == '3':
         while True:
-            veg = input('Enter the name of the vegetable to change: ')
-            if veg in vegetables:
+            item = input('Enter the name of the vegetable to change: ')
+            if item in vegetables:
                 try: 
-                    price = float(input('Enter the price of the vegetable: '))
-                    vegetables[veg] = price
+                    price = float(input('Enter the price of the vegetable: $'))
+                    vegetables[item] = price
                     break
                 except ValueError:
                     print("Invalid price.\n")
                     break
-                print(f'The price of {veg} has been changed to ${price:.2f}.\n')
+                print(f'The price of {item} has been changed to ${price:.2f}.\n')
             else:
-                print(f'{veg} not found on the list.\n')
-
-    #Deletes vegetable on list
+                print(f'{item} not found on the list.\n') #if item is not found on dictionary, breaks to menu
+                break
+            
+    #Deletes vegetable in dictionary
     elif num == '4':
-        if not vegetables:
-            print ("No vegetables in vegetables.dat.\n")
+        if not vegetables: 
+            print ("No vegetables in vegetables.dat.\n") # if no vegetables in dictionary, breaks to menu
             continue
-        veg = input('Enter the name of the vegetable to delete: ')
-        if veg in vegetables:
-            del vegetables[veg]
-            print(f'{veg} deleted.\n')
+        item = input('Enter the name of the vegetable to delete: ')
+        if item in vegetables: #if vegetable name found, deletes it
+            del vegetables[item]
+            print(f'{item} deleted.\n')
         else:
-            print(f'{veg} cannot be found on the list.\n')
+            print(f'{item} cannot be found on the list.\n') #if vegetable name not found, breaks to menu
         break
 
     #Save vegetable.dat and close program
     elif num == '5':
-        with open('vegetables.dat', 'wb') as file:
-            pickle.dump(vegetables, file)
+        file = open('vegetables.dat', 'wb') #open file
+        pickle.dump(vegetables, file) #pickle saves in file
+        file.close() #closes file
         print('Saving to vegetables.dat and quitting the program.\n')
-        break
+        break 
 
     else:
         print('You must chose 1, 2, 3, 4, or 5.\n')
