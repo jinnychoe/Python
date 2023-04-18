@@ -10,15 +10,15 @@ class Customer:
     
     def set_name(self,name):
         self.__name = name
+        return self.__name
     
     def set_address(self,address):
         self.__address = address
+        return self.__address
         
     def set_phone(self,phone):
         self.__phone = phone
-
-#import the other class file name
-import class7
+        return self.__phone
 
 #start the main fxn
 def main():
@@ -26,12 +26,12 @@ def main():
     address = (input("Enter the address "))
     phone = (input("Enter the phone "))
     
-    #call class7 or the first file then the name of the class, then the name of the fxn which equals to the input var
+    class7 = Customer(name,address,phone)
     
-    v1 = class7.Customer.set_name = name
-    v2 = class7.Customer.net_address = address
-    v3 = class7.Customer.set_phone = phone
+    v1 = class7.set_name(name)
+    v2 = class7.set_address(address)
+    v3 = class7.set_phone(phone)
     
-    print("Hello "+v1+", your address is "+v2+"and your # is "+v3)
+    print("Hello ",v1,", your address is ",v2,"and your # is ",str(v3))
 
 main()
