@@ -1,29 +1,37 @@
+import openai_secret_manager
+import openai
 import requests
-import json
 
-# Enter your OMIM API key here
-api_key = 'YOUR_API_KEY'
+# Authenticate with OpenAI API
+secrets = openai_secret_manager.get_secret("openai")
+openai.api_key = secrets["api_key"]
 
-# Enter the gene symbol that you want to search for
-gene_symbol = 'BRCA1'
+# Authenticate with OMIM API
+secrets = openai_secret_manager.get_secret("omim")
+omim_api_key = secrets["api_key"]
 
-# Send a GET request to the OMIM API to search for the gene
-url = f'https://api.omim.org/api/geneMap/search?apiKey={api_key}&search={gene_symbol}&limit=1'
-response = requests.get(url)
+# Prompt user for gene name
+gene_name = input("Please enter a gene name: ")
 
-# Parse the response JSON data and retrieve the OMIM ID of the gene
-gene_data = json.loads(response.text)['searchResponse']['geneMapList'][0]
-omim_id = gene_data['mimNumber']
+# Use GPT-3 to correct spelling of gene name
+model_engine = "text-davinci-002"
+response = openai.Completion.create(
+    engine=model_engine,
+    prompt=f"I think the gene name you meant was {gene_name}.",
+    max_tokens=50,
+    n=1,
+    stop=None,
+    temperature=0.7,
+)
 
-# Send a GET request to the OMIM API to retrieve information about the gene
-url = f'https://api.omim.org/api/entry/search?apiKey={api_key}&search={omim_id}&include=all'
-response = requests.get(url)
+corrected_gene_name = response.choices[0].text.strip()
 
-# Parse the response JSON data and retrieve relevant information about the gene
-gene_info = json.loads(response.text)['omim']['entryList'][0]
-gene_name = gene_info['entry']['titles']['preferredTitle']
-gene_description = gene_info['entry']['textSectionList'][0]['textSection']['text']
+# Use OMIM API to get gene description
+url = f"https://api.omim.org/api/geneMap/search?search={corrected_gene_name}&format=json&apiKey={omim_api_key}"
+response = requests.get(url).json()
 
-# Print the retrieved information about the gene
-print(f'Gene name: {gene_name}')
-print(f'Gene description: {gene_description}')
+if "geneMapList" in response and response["geneMapList"]:
+    gene_description = response["geneMapList"][0]["geneMap"]["description"]
+    print(f"Description of {corrected_gene_name}: {gene_description}")
+else:
+    print(f"No gene description found for {corrected_gene_name}")
