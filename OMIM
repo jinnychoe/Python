@@ -1,0 +1,29 @@
+import requests
+import json
+
+# Enter your OMIM API key here
+api_key = 'YOUR_API_KEY'
+
+# Enter the gene symbol that you want to search for
+gene_symbol = 'BRCA1'
+
+# Send a GET request to the OMIM API to search for the gene
+url = f'https://api.omim.org/api/geneMap/search?apiKey={api_key}&search={gene_symbol}&limit=1'
+response = requests.get(url)
+
+# Parse the response JSON data and retrieve the OMIM ID of the gene
+gene_data = json.loads(response.text)['searchResponse']['geneMapList'][0]
+omim_id = gene_data['mimNumber']
+
+# Send a GET request to the OMIM API to retrieve information about the gene
+url = f'https://api.omim.org/api/entry/search?apiKey={api_key}&search={omim_id}&include=all'
+response = requests.get(url)
+
+# Parse the response JSON data and retrieve relevant information about the gene
+gene_info = json.loads(response.text)['omim']['entryList'][0]
+gene_name = gene_info['entry']['titles']['preferredTitle']
+gene_description = gene_info['entry']['textSectionList'][0]['textSection']['text']
+
+# Print the retrieved information about the gene
+print(f'Gene name: {gene_name}')
+print(f'Gene description: {gene_description}')
