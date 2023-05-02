@@ -146,7 +146,7 @@ main()
 
     #install on terminal
     #sudo apt-get install python-pip
-    #pip install requests (. )
+    #python -m pip install requests
     #sudo apt-get update
     #sudo apt-get install pymol
     
