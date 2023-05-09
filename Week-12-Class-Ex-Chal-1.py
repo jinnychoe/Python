@@ -9,7 +9,7 @@ class MyGUI:
         self.main_window = tkinter.Tk()
         
         #display a title
-        self.main_window.title('My First GUI')
+        self.main_window.title('Jinny\'s first GUI')
         self.main_window.geometry('400x200')
         #Enter the tkinter main loop
         tkinter.mainloop()
