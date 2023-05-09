@@ -7,7 +7,7 @@
 import tkinter
 import tkinter.messagebox
 
-class MyGUI
+class MyGUI:
     def __init__(self):
         #create the main window widget
         self.main_window = tkinter.Tk()
