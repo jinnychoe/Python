@@ -13,7 +13,7 @@ class MyGUI:
 
         #create 2 label widget with solid borders
         self.label1=tkinter.Label(self.main_window,text='Hello World.',borderwidth=1,relief='solid')
-        self.label2 = tkinter.Label(self.main_window, text = 'This is my GUI program.',borderwidth=1,relief='solid')
+        self.label2 = tkinter.Label(self.main_window, text = 'This is Jinny\'s GUI program.',borderwidth=1,relief='solid')
         self.label3 = tkinter.Label(self.main_window, text = 'Never give up. I believe in you. You can do it.',borderwidth=1,relief='solid')
         self.label4 = tkinter.Label(self.main_window, text = 'Just keep swimming.',borderwidth=1,relief='solid')
 
