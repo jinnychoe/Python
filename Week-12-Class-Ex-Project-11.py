@@ -23,7 +23,7 @@ class KiloConverterGUI:
         self.kilo_entry.pack(side='left')
         
         #create button widgets for bottom frame
-        self.calc_button = tkinter.Button(self.bottom_frame,text='Convert')
+        self.calc_button = tkinter.Button(self.bottom_frame,text='Convert',command=self.convert)
         self.quit_button = tkinter.Button(self.bottom_frame,text='Quit',command=self.main_window.destroy)
         
         #pack bottom frame's buttons
