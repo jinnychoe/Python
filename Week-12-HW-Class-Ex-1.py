@@ -1,6 +1,6 @@
 #Jinny Choe
 #5/9/2023
-#Week 12 HW Project 1
+#Week 12 HW Class Exercise 1
 
 #This program uses GUI to get three test scores & display average
 
