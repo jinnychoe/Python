@@ -33,6 +33,6 @@ class MyGUI:
         #display info dialog box
         tkinter.messagebox.showinfo('Response','Thanks for clicking the button.')
     
-    #create instance of MyGUI class
-    if __name__ == '__main__':
-        my_gui = MyGUI()
+ #create instance of MyGUI class
+if __name__ == '__main__':
+    my_gui = MyGUI()
