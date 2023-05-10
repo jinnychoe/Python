@@ -11,8 +11,9 @@ class KiloConverterGUI:
         self.main_window = tkinter.Tk()
         
         #create 2 frams to group widgets
-        self.top_frame = tkinter.Frame(self.main_window)
-        self.bottom_frame = tkinter.Frame(self.main_window)
+        self.top_frame = tkinter.Frame()
+        self.mid_frame = tkinter.Frame()
+        self.bottom_frame = tkinter.Frame()
         
         #create widgets for top frame
         self.prompt_label = tkinter.Label(self.top_frame, text='Enter a distance in km: ')
@@ -21,6 +22,20 @@ class KiloConverterGUI:
         #pack the top frame's widgets
         self.prompt_label.pack(side='left')
         self.kilo_entry.pack(side='left')
+        
+        #widgets for middle frame
+        self.descr_label = tkinter.Label(self.mid_frame,text='Converted to miles: ')
+        
+        #initialize StrVar obejct for output label
+        self.value = tkinter.StringVar()
+        
+        #StrVar object to associate with output label
+        #Value in StrVar will be displayed in label
+        self.miles_label = tkinter.Label(self.mid_frame,textvariable=self.value)
+        
+        #pack middle frame widget
+        self.descr_label.pack(side='left')
+        self.miles_label.pack(side='left')
         
         #create button widgets for bottom frame
         self.calc_button = tkinter.Button(self.bottom_frame,text='Convert',command=self.convert)
@@ -32,6 +47,7 @@ class KiloConverterGUI:
         
         #pack frames
         self.top_frame.pack()
+        self.mid_frame.pack()
         self.bottom_frame.pack()
         
         #enter tkinter main loop
@@ -46,9 +62,10 @@ class KiloConverterGUI:
         #convert km to mi
         miles = kilo*0.6214
         
-        #display results in info dialog box
-        tkinter.messagebox.showinfo('Results',str(kilo)+' km is equal to '+str(miles)+' mi')
-
+        #convert mi to str & store in StrVar object
+        #will automatically update miles_label widget
+        self.value.set(miles)
+        
 #create instance of KiloConverterGUI class
 if __name__ == '__main__':
     kilo_conv = KiloConverterGUI()
